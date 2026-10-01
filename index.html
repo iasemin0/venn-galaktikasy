@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ky"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090924">
+<meta name="description" content="Венндин диаграммасы боюнча интерактивдүү оюн-лаборатория">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Венн">
+<meta property="og:title" content="ВЕНН ГАЛАКТИКАСЫ"><meta property="og:description" content="Логиканы тап. Диаграмманы түз. Жоопту ач!">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2722%27%20fill%3D%27%23090924%27/%3E%3Ctext%20x%3D%2750%27%20y%3D%2768%27%20font-size%3D%2758%27%20text-anchor%3D%27middle%27%3E%F0%9F%8C%8C%3C/text%3E%3C/svg%3E"><link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2722%27%20fill%3D%27%23090924%27/%3E%3Ctext%20x%3D%2750%27%20y%3D%2768%27%20font-size%3D%2758%27%20text-anchor%3D%27middle%27%3E%F0%9F%8C%8C%3C/text%3E%3C/svg%3E">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22%D0%92%D0%95%D0%9D%D0%9D%20%D0%93%D0%90%D0%9B%D0%90%D0%9A%D0%A2%D0%98%D0%9A%D0%90%D0%A1%D0%AB%22%2C%22short_name%22%3A%22%D0%92%D0%B5%D0%BD%D0%BD%22%2C%22lang%22%3A%22ky%22%2C%22display%22%3A%22standalone%22%2C%22orientation%22%3A%22portrait%22%2C%22background_color%22%3A%22%23090924%22%2C%22theme_color%22%3A%22%23090924%22%2C%22start_url%22%3A%22.%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%253D%2527http%253A//www.w3.org/2000/svg%2527%2520viewBox%253D%25270%25200%2520100%2520100%2527%253E%253Crect%2520width%253D%2527100%2527%2520height%253D%2527100%2527%2520rx%253D%252722%2527%2520fill%253D%2527%2523090924%2527/%253E%253Ctext%2520x%253D%252750%2527%2520y%253D%252768%2527%2520font-size%253D%252758%2527%2520text-anchor%253D%2527middle%2527%253E%25F0%259F%258C%258C%253C/text%253E%253C/svg%253E%22%2C%22sizes%22%3A%22any%22%2C%22type%22%3A%22image/svg%2Bxml%22%7D%5D%7D">
+<title>ВЕНН ГАЛАКТИКАСЫ</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px);background:#090924}
+body{--bg:radial-gradient(ellipse at top,#26236b,#090924 65%);margin:0;min-height:100vh;background:var(--bg) fixed;background-color:#090924;color:#eef;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;transition:.5s}
+body.boss{--bg:radial-gradient(ellipse at top,#7a1414,#200606 65%)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background-image:radial-gradient(1.5px 1.5px at 20% 30%,#fff,transparent),radial-gradient(1px 1px at 70% 20%,#fff,transparent),radial-gradient(1.5px 1.5px at 40% 80%,#cdf,transparent),radial-gradient(1px 1px at 85% 65%,#fff,transparent),radial-gradient(1px 1px at 10% 70%,#fff,transparent);animation:tw 4s infinite alternate}
+@keyframes tw{from{opacity:.4}to{opacity:1}}
+.wrap{max-width:480px;margin:auto;padding:14px}.c{text-align:center}
+h1{font-size:28px;margin:6px 0;background:linear-gradient(90deg,#7cf,#f9c,#fc6);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2,h3{margin:8px 0}.sub{opacity:.85}
+.logo{font-size:64px;animation:fl 3s ease-in-out infinite}@keyframes fl{50%{transform:translateY(-8px) rotate(8deg)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0}
+.stats b{background:#ffffff14;border-radius:14px;padding:8px 2px;font-size:12px;display:flex;flex-direction:column;font-weight:400}.stats i{font-style:normal;font-size:20px;font-weight:700}
+.bar{height:10px;background:#ffffff22;border-radius:9px;overflow:hidden;margin:8px 0}.bar u{display:block;height:100%;background:linear-gradient(90deg,#7cf,#f9c);transition:width .5s}
+.btn{-webkit-tap-highlight-color:transparent;display:block;width:100%;margin:10px 0;padding:16px;font-size:19px;font-weight:700;color:#fff;border:0;border-radius:18px;background:linear-gradient(135deg,#6a5cff,#c04dff);box-shadow:0 4px 18px #6a5cff66;cursor:pointer}
+.btn.s{background:#ffffff1f;box-shadow:none}.btn:active{transform:scale(.97)}.hide{display:none}.row{display:flex;gap:10px}
+.card{background:#ffffff14;border-radius:16px;padding:14px;line-height:1.5}
+.lvl{display:flex;align-items:center;gap:12px;width:100%;margin:8px 0;padding:14px;border:0;border-radius:16px;background:#ffffff14;color:#fff;font-size:16px;text-align:left}
+.lvl:disabled{opacity:.4}.lvl em{font-style:normal;font-weight:700;width:38px;height:38px;border-radius:50%;background:#6a5cff;display:grid;place-items:center;flex:none}
+.lvl small{display:block;opacity:.7}.bossb em{background:#e22}
+.top{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.back{background:#ffffff22;color:#fff;border:0;border-radius:12px;font-size:20px;padding:8px 14px}
+#hud{display:flex;gap:10px;font-size:14px}
+.dg svg{width:100%;height:auto;max-height:52vh}
+.rg{fill:transparent;transition:fill .3s}.rg.sel{fill:#fd5a}.rg.ok{fill:#3d9a}.rg.hl{fill:#7cf8}
+.cr{fill-opacity:.12;stroke-width:2.5;transform-box:fill-box;transform-origin:center;animation:gr .8s both}
+svg.na .cr{animation:none}@keyframes gr{from{opacity:0;transform:scale(.4)}}
+.uni{fill:none;stroke:#fff5;stroke-dasharray:5 4}.t{fill:#fff;font-size:11px;text-anchor:middle;font-weight:700}.lb{fill:#cde;font-size:11px;text-anchor:middle}
+.chip{display:inline-block;margin:5px;padding:12px 16px;border-radius:14px;background:#3a3aa8;font-size:17px;touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab}
+.chip.sel{outline:3px solid #fd5}.ghost{position:fixed;transform:translate(-50%,-50%);pointer-events:none;z-index:9;opacity:.9;margin:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+label{font-size:13px;display:flex;flex-direction:column;gap:4px}
+.in{padding:12px;font-size:18px;border-radius:12px;border:2px solid #6a5cff;background:#0d0d3a;color:#fff;width:100%;box-sizing:border-box;margin:4px 0}.in.bad{border-color:#f55}
+#fb{min-height:24px;font-weight:700}#fb.ok{color:#3d9}#fb.no{color:#f66;animation:sh .4s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#fc3;color:#222;padding:10px 16px;border-radius:14px;font-weight:700;z-index:99;animation:tp .3s;max-width:90%;text-align:center}
+@keyframes tp{from{transform:translate(-50%,-20px);opacity:0}}
+.ach{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.ach span{font-size:12px;background:#ffffff14;border-radius:12px;padding:6px 10px;opacity:.35}.ach span.on{opacity:1;background:#fc33}
+table{width:100%;border-collapse:collapse;margin-bottom:12px}td{padding:9px;border-bottom:1px solid #ffffff22}
+.q{font-size:18px;line-height:1.45}small{opacity:.75}
+</style></head>
+<body><div id="app"></div>
+<script>
+/* ===== ДАЙЫНДАР ===== */
+const $=s=>document.querySelector(s),app=$('#app'),K='vennGalaxy2';
+const P2=(nm,q,a)=>({t:'pick',n:2,nm,q,a}),P3=(nm,q,a)=>({t:'pick',n:3,nm,q,a}),D=(n,nm,items)=>({t:'drag',n,nm,items});
+const f2=(nm,T,A,B,X,qs,tx,b)=>({t:'fill',n:2,nm,T,b,qs,tx:tx||`Класста ${T} окуучу бар. «${nm[0]}» — ${A} окуучу, «${nm[1]}» — ${B} окуучу, экөөнө тең — ${X} окуучу.`,sol:{a:A-X,b:B-X,ab:X,o:T-A-B+X}});
+const f3=(nm,T,A,B,C,AB,AC,BC,X,qs)=>{const ab=AB-X,ac=AC-X,bc=BC-X,a=A-ab-ac-X,b=B-ab-bc-X,c=C-ac-bc-X;return{t:'fill',n:3,nm,T,qs,tx:`Бардыгы ${T} окуучу. «${nm[0]}» — ${A}, «${nm[1]}» — ${B}, «${nm[2]}» — ${C}. Экөөнө тең (үчөөнө тең киргендерди кошо): ${nm[0]}∩${nm[1]} — ${AB}, ${nm[0]}∩${nm[2]} — ${AC}, ${nm[1]}∩${nm[2]} — ${BC}. Үчөөнө тең — ${X}.`,sol:{a,b,c,ab,ac,bc,abc:X,o:T-a-b-c-ab-ac-bc-X}}};
+const M=['Математика','Информатика'],F=['Футбол','Шахмат'];
+const L=[
+{n:'Венн диаграммасын таануу',x:'Венндин диаграммасы — топтордун ортосундагы байланышты тегеректер аркылуу көрсөтүүчү схема. Ар бир тегерек — бир топ, ортоңку жер — экөөнө тең киргендер.',T:[
+P2(M,'Тап: «Математика» гана жактыргандар',['a']),
+P2(M,'Тап: «Информатика» гана жактыргандар',['b']),
+P2(M,'Тап: экөөнү тең жактыргандар (A ∩ B)',['ab']),
+P2(M,'Тап: экөөнө тең кирбегендер',['o'])]},
+{n:'Аймактарды аныктоо',x:'Кээде бир нече аймакты бирге тандайбыз. «Же» — биригүү (A ∪ B): эки тегеректин бардыгы. «Жана» — кесилишүү (A ∩ B): ортоңку жер.',T:[
+P2(['Мышык','Ит'],'Мышык же ит асыраган — биригүү (A ∪ B)',['a','ab','b']),
+P2(F,'Футболду жактырат, бирок шахматты жактырбайт',['a']),
+P2(F,'Шахматты жактыргандардын бардыгы (B тегереги)',['b','ab']),
+P2(F,'Так бир гана топко кирген (экөөнө тең эмес, эч бирине эмес)',['a','b'])]},
+{n:'Объекттерди жайгаштыруу',x:'Ар бир объектке эки суроо бер: A тобуна кирет беле? B тобуна кирет беле? Экөөнө тең кирсе — ортого, эч бирине кирбесе — сыртына.',T:[
+D(2,['Жемиш','Кызыл'],[['Алма','ab'],['Банан','a'],['Кызыл көйнөк','b'],['Сабиз','o'],['Китеп','o']]),
+D(2,['Санарип','Окуу үчүн'],[['Компьютер','ab'],['Телефон','a'],['Python','ab'],['Китеп','b'],['Алма','o'],['Сабиз','o']]),
+D(2,['Сүт эмүүчү','Үйдө багылат'],[['Ит','ab'],['Кой','ab'],['Арстан','a'],['Тоок','b'],['Дарак','o']])]},
+{n:'Жөнөкөй логикалык маселелер',x:'Сандарды аймактарга жазабыз. Ортодон баштайбыз — экөөнө тең кирген сан. Андан кийин ар бир тегеректин калган бөлүгүн эсептейбиз.',T:[
+f2(F,20,12,10,5,['a','b','ab','o']),
+f2(['Сүрөт','Музыка'],25,14,11,6,['a','b','ab','o']),
+f2(['Ыр','Бий'],30,16,12,4,['ab','u','o'])]},
+{n:'Сандык маселелер',x:'Гана A = A − кесилиш. Эч бирине кирбегендер = бардыгы − (гана A + гана B + кесилиш). Акыркы эки маселеде диаграмманы өзүң кур!',T:[
+f2(['Шахмат','Шашки'],32,20,18,9,['u','a','o']),
+f2(['Волейбол','Баскетбол'],40,25,22,10,['b','ab','u','o']),
+f2(['Роботтор','Ойлоп табуу'],28,15,17,8,['a','o']),
+f2(M,25,15,12,7,['a','b','o'],'25 окуучунун 15и математика кружогуна, 12си информатика кружогуна катышат. 7 окуучу эки кружокко тең катышат.',1),
+f2(['Плавание','Теннис'],30,18,15,8,['u','o'],'30 окуучунун 18и плавание секциясына, 15и теннис секциясына жазылган. 8 окуучу экөөнө тең жазылган.',1)]},
+{n:'3 топтуу Венн диаграммасы',x:'3 тегерек — 7 аймак жана сырты. Ар дайым эң ортодон (үчөөнө тең) баштап, андан кийин экилик кесилиштерди эсепте.',T:[
+P3(['Математика','Физика','Химия'],'Тап: үчөөнө тең киргендер',['abc']),
+P3(['Математика','Физика','Химия'],'Тап: Математика жана Физика, бирок Химия эмес',['ab']),
+P3(['Футбол','Волейбол','Баскетбол'],'Тап: так бир гана топко киргендер',['a','b','c']),
+D(3,['Кызыл','Тегерек','Жемиш'],[['Алма','abc'],['Кызыл топ','ab'],['Банан','c'],['Апельсин','bc'],['Кызыл кирпич','a'],['Дептер','o']]),
+f3(['Математика','Физика','Химия'],30,15,12,10,5,4,3,2,['abc','u','o']),
+f3(['Футбол','Волейбол','Баскетбол'],40,20,18,15,8,6,5,3,['one','two','o'])]},
+{n:'Татаал логикалык маселелер',x:'Татаал маселе — кадам-кадам чеч: ортосу → экилик аймактар → «гана» аймактар → сырты. Акырында бардык сандардын суммасы «бардыгына» барабар экенин текшер!',T:[
+f3(['Ыр','Бий','Сүрөт'],35,18,16,14,7,6,5,3,['u','two','o']),
+f3(['Шахмат','Шашки','Го'],50,28,25,22,12,10,9,5,['one','abc','o']),
+f3(['Python','Scratch','Java'],45,25,20,18,9,8,7,4,['two','u','c'])]}
+];
+const BP=[[40,22,18,8,'o',M],[30,17,15,6,'a',F],[35,20,16,9,'b',['Сүрөт','Музыка']],[28,15,13,5,'u',M],[50,30,26,12,'o',F],[24,14,11,4,'b',['Ит','Мышык']],[36,19,21,10,'a',['Волейбол','Баскетбол']]];
+const G={2:{w:300,h:210,c:[[110,100,65],[190,100,65]],p:{a:[75,100],ab:[150,100],b:[225,100],o:[150,199]},lab:[[85,26],[215,26]]},
+3:{w:300,h:262,c:[[115,90,60],[185,90,60],[150,150,60]],p:{a:[85,70],b:[215,70],c:[150,190],ab:[150,60],ac:[112,130],bc:[188,130],abc:[150,102],o:[150,252]},lab:[[70,22],[230,22],[150,226]]}};
+const CL=['#6cf','#f9c','#fc6'];
+/* ===== ДИАГРАММА ===== */
+function svg(n,o={}){const g=G[n],nm=o.nm||['A','B','C'];let d='',b='',c='',x='',l='';
+g.c.forEach((q,i)=>{d+=`<clipPath id="cp${i}"><circle cx="${q[0]}" cy="${q[1]}" r="${q[2]}"/></clipPath>`;c+=`<circle class="cr" cx="${q[0]}" cy="${q[1]}" r="${q[2]}" fill="${CL[i]}" stroke="${CL[i]}"/>`;l+=`<text class="lb" x="${g.lab[i][0]}" y="${g.lab[i][1]}">${nm[i]}</text>`});
+Object.keys(g.p).forEach(k=>{const I=k=='o'?[]:[...k].map(z=>'abc'.indexOf(z));
+d+=`<mask id="m${k}"><rect width="${g.w}" height="${g.h}" fill="#fff"/>`+g.c.map((q,i)=>I.includes(i)?'':`<circle cx="${q[0]}" cy="${q[1]}" r="${q[2]}" fill="#000"/>`).join('')+'</mask>';
+const cls='rg'+(o.sel&&o.sel.has(k)?' sel':'')+(o.ok&&o.ok.has(k)?' ok':'')+(o.hl==k?' hl':'');
+let s=`<rect width="${g.w}" height="${g.h}" class="${cls}"/>`;I.forEach(i=>s=`<g clip-path="url(#cp${i})">${s}</g>`);b+=`<g mask="url(#m${k})">${s}</g>`});
+Object.entries(o.txt||{}).forEach(([k,v])=>{const p=g.p[k],ls=[].concat(v).filter(s=>s!=='');if(!ls.length)return;
+if(k=='o')x+=`<text class="t" x="${p[0]}" y="${p[1]}">Сырты: ${ls.join(' · ')}</text>`;
+else ls.forEach((s,j)=>x+=`<text class="t" x="${p[0]}" y="${p[1]+(j-(ls.length-1)/2)*12+4}">${s}</text>`)});
+return `<svg class="${o.na?'na':''}" viewBox="0 0 ${g.w} ${g.h}"><defs>${d}</defs><rect class="uni" x="3" y="3" width="${g.w-6}" height="${g.h-6}" rx="12"/>${c}${b}${l}${x}</svg>`}
+function reg(el,n,x,y){const r=el.getBoundingClientRect(),g=G[n],px=(x-r.left)/r.width*g.w,py=(y-r.top)/r.height*g.h;if(px<0||py<0||px>g.w||py>g.h)return null;let k='';g.c.forEach((q,i)=>{if(Math.hypot(px-q[0],py-q[1])<=q[2])k+='abc'[i]});return k||'o'}
+function qtext(k,nm,n){const[A,B,C]=nm;return{a:`«${A}» гана`,b:`«${B}» гана`,c:`«${C}» гана`,ab:n==2?'Экөөнө тең (∩)':`«${A}» жана «${B}» гана`,ac:`«${A}» жана «${C}» гана`,bc:`«${B}» жана «${C}» гана`,abc:'Үчөөнө тең',o:'Эч бирине кирбегендер',u:'Жок дегенде бирине киргендер (∪)',one:'Так бир топко киргендер',two:'Так эки топко киргендер'}[k]}
+const qv=(k,s)=>{const g=x=>s[x]||0,m={u:g('a')+g('b')+g('c')+g('ab')+g('ac')+g('bc')+g('abc'),one:g('a')+g('b')+g('c'),two:g('ab')+g('ac')+g('bc')};return k in m?m[k]:s[k]};
+/* ===== ЖАЛПЫ ===== */
+let S={xp:0,pts:0,streak:0,best:0,hearts:5,ok:0,bad:0,done:{},ach:{},boss:0},P={},timer=null;
+try{Object.assign(S,JSON.parse(localStorage.getItem(K)||'{}'))}catch(e){}
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const lvl=()=>1+Math.floor(S.xp/100),tot=L.reduce((t,l)=>t+l.T.length,0),dn=i=>L[i].T.filter((_,j)=>S.done[i+'.'+j]).length,full=i=>dn(i)==L[i].T.length;
+const AC=[['first','🚀','Биринчи кадам',()=>S.ok>=1],['st5','🔥','Оттуу серия',()=>S.best>=5],['xp100','⭐','100 XP',()=>S.xp>=100],['l1','🪐','Диаграмманы таануучу',()=>full(0)],['l7','🧠','Логика чебери',()=>full(6)],['b5','🏆','Венндин чебери',()=>S.boss>=5]];
+function toast(m){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),2200)}
+function ach(){AC.forEach(a=>{if(!S.ach[a[0]]&&a[3]()){S.ach[a[0]]=1;toast(a[1]+' Жетишкендик: '+a[2])}})}
+const hud=()=>{const h=$('#hud');if(h)h.innerHTML=`<span>❤️ ${S.hearts}</span><span>✨ ${S.xp}</span><span>🔥 ${S.streak}</span><span>🏅 ${lvl()}</span>`};
+function fb(m,ok){const f=$('#fb');if(!f)return;f.className='';void f.offsetWidth;f.className=ok?'ok':'no';f.textContent=m}
+function good(){S.ok++;S.streak++;S.best=Math.max(S.best,S.streak);ach();save();hud()}
+function bad(){S.bad++;S.streak=0;P.err=1;S.hearts--;if(S.hearts<=0){S.hearts=5;toast('💔 Жүрөктөр түгөндү — жаңылары берилди!')}save();hud()}
+function solved(xp){if(!P.err){S.xp+=xp;S.pts+=xp+S.streak*2;toast('+'+xp+' XP ✨')}S.done[P.li+'.'+P.ti]=1;P.lock=1;ach();save();hud();$('#nx').classList.remove('hide')}
+const draw=()=>{$('#dg').innerHTML=svg(P.n,P.o);P.o.na=1};
+/* ===== ЭКРАНДАР ===== */
+function home(){clearInterval(timer);document.body.classList.remove('boss');
+app.innerHTML=`<div class="wrap c"><div class="logo">🌌</div><h1>ВЕНН ГАЛАКТИКАСЫ</h1><p class="sub">Логиканы тап. Диаграмманы түз. Жоопту ач!</p>
+<div class="stats"><b>✨<i>${S.xp}</i>XP</b><b>🏅<i>${lvl()}</i>Даража</b><b>⭐<i>${S.pts}</i>Упай</b><b>🔥<i>${S.streak}</i>Серия</b><b>❤️<i>${S.hearts}</i>Жүрөк</b><b>🏆<i>${Object.keys(S.ach).length}/${AC.length}</i>Жетишкендик</b></div>
+<div class="bar"><u style="width:${S.xp%100}%"></u></div>
+<button class="btn" onclick="map()">🚀 Баштоо</button><button class="btn s" onclick="teacher()">👩‍🏫 Мугалим үчүн</button>
+<div class="ach">${AC.map(a=>`<span class="${S.ach[a[0]]?'on':''}">${a[1]} ${a[2]}</span>`).join('')}</div></div>`}
+function map(){clearInterval(timer);document.body.classList.remove('boss');
+app.innerHTML=`<div class="wrap"><div class="top"><button class="back" onclick="home()">←</button><h2>Деңгээлдер</h2><span></span></div>`+L.map((l,i)=>{const lk=i&&!full(i-1);return `<button class="lvl" ${lk?'disabled':''} onclick="intro(${i})"><em>${lk?'🔒':i+1}</em><span>${l.n}<small>${dn(i)}/${l.T.length}</small></span></button>`}).join('')+`<button class="lvl bossb" ${full(6)?'':'disabled'} onclick="boss()"><em>${full(6)?'💀':'🔒'}</em><span>BOSS: Логиканын кожоюну<small>Эң жакшы: ${S.boss}/5</small></span></button></div>`}
+function intro(i){clearInterval(timer);const n=i>4?3:2,ks=Object.keys(G[n].p).filter(k=>k!='o');let j=0;
+app.innerHTML=`<div class="wrap c"><div class="top"><button class="back" onclick="map()">←</button><h2>${i+1}-деңгээл</h2><span></span></div><h3>${L[i].n}</h3><div class="card"><p>${L[i].x}</p></div><div id="dg" class="dg">${svg(n,{hl:ks[0]})}</div><p id="cap"><b>${qtext(ks[0],['A','B','C'],n)}</b></p><button class="btn" onclick="start(${i})">▶ Практикага өт</button></div>`;
+timer=setInterval(()=>{j++;const k=ks[j%ks.length];$('#dg').innerHTML=svg(n,{hl:k,na:1});$('#cap').innerHTML=`<b>${qtext(k,['A','B','C'],n)}</b>`},1400)}
+function start(i){clearInterval(timer);P={li:i,ti:0};step()}
+function step(){const l=L[P.li];if(P.ti>=l.T.length){ach();app.innerHTML=`<div class="wrap c"><div class="logo">🎉</div><h2>Деңгээл өттү!</h2><p>${l.n}</p><p>✨ ${S.xp} XP · ⭐ ${S.pts} упай</p><button class="btn" onclick="map()">Деңгээлдер</button></div>`;return}
+const t=l.T[P.ti];Object.assign(P,{t,err:0,cur:null,n:t.n,o:{},lock:0,nm:t.nm});
+app.innerHTML=`<div class="wrap"><div class="top"><button class="back" onclick="map()">←</button><div id="hud"></div></div><div class="bar"><u style="width:${P.ti/l.T.length*100}%"></u></div><h3>${P.li+1}-деңгээл · ${P.ti+1}/${l.T.length}</h3><div id="ui"></div><p id="fb"></p><button class="btn hide" id="nx" onclick="P.ti++;step()">Улантуу →</button></div>`;
+hud();({pick:pickUI,drag:dragUI,fill:fillUI})[t.t](t)}
+/* --- 1: аймак тандоо --- */
+function pickUI(t){P.sel=new Set();P.o={sel:P.sel,nm:t.nm};
+$('#ui').innerHTML=`<p class="q">${t.q}</p><small>Аймактарды таптап танда (бир нечеси болушу мүмкүн)</small><div id="dg" class="dg"></div><button class="btn" id="ck">Текшер</button>`;draw();
+$('#dg').onclick=e=>{if(P.lock)return;const k=reg($('#dg svg'),P.n,e.clientX,e.clientY);if(!k)return;P.sel.has(k)?P.sel.delete(k):P.sel.add(k);draw()};
+$('#ck').onclick=()=>{if(P.lock)return;const s=P.sel;if(s.size==t.a.length&&t.a.every(k=>s.has(k))){P.o={ok:s,nm:t.nm};draw();good();fb('✅ Туура!',1);solved(10)}else{bad();fb('❌ Кайра ойлон. Тегеректердин кайсы бөлүгү керек?',0)}}}
+/* --- 2: drag & drop --- */
+function dragUI(t){P.left=t.items.length;P.o={nm:t.nm,txt:{}};
+$('#ui').innerHTML=`<p class="q">Объектти сүйрөп туура аймакка таштаңыз</p><small>Же объектти таптап, анан аймакты таптаңыз</small><div id="dg" class="dg"></div><div id="items">${t.items.map((x,i)=>[x,i]).sort(()=>Math.random()-.5).map(([x,i])=>`<span class="chip" data-i="${i}">${x[0]}</span>`).join('')}</div>`;draw();
+$('#dg').onclick=e=>{if(P.cur!=null)drop(P.cur,e.clientX,e.clientY)};
+$('#items').onpointerdown=e=>{const c=e.target.closest('.chip');if(!c||P.lock)return;e.preventDefault();const sx=e.clientX,sy=e.clientY;let gh=null;
+const mv=ev=>{if(!gh&&Math.hypot(ev.clientX-sx,ev.clientY-sy)>8){gh=c.cloneNode(true);gh.className='chip ghost';document.body.appendChild(gh)}if(gh){gh.style.left=ev.clientX+'px';gh.style.top=ev.clientY+'px'}};
+const up=ev=>{removeEventListener('pointermove',mv);removeEventListener('pointerup',up);
+if(gh){gh.remove();drop(c.dataset.i,ev.clientX,ev.clientY)}else{document.querySelectorAll('.chip.sel').forEach(z=>z.classList.remove('sel'));c.classList.add('sel');P.cur=c.dataset.i}};
+addEventListener('pointermove',mv);addEventListener('pointerup',up)}}
+function drop(i,x,y){const k=reg($('#dg svg'),P.n,x,y);if(!k)return;const it=P.t.items[i],c=document.querySelector(`.chip[data-i="${i}"]`);if(!c)return;
+if(k==it[1]){(P.o.txt[k]=P.o.txt[k]||[]).push(it[0]);c.remove();P.cur=null;P.o.hl=k;draw();good();fb('✅ Туура!',1);if(!--P.left)solved(10)}
+else{bad();P.cur=null;c.classList.remove('sel');fb('❌ Кайра ойлон. Бул объект кайсы эки топко тиешелүү?',0)}}
+/* --- 3: сандык маселе / диаграмманы өзүң кур --- */
+function fillUI(t){P.step=t.b?0:2;fillStep()}
+function fillStep(){const t=P.t,u=$('#ui'),hd=`<p class="q">${t.tx}</p>`;fb('');
+if(P.step==0){u.innerHTML=hd+`<p class="q">🛠 Диаграмманы өзүң кур. Канча тегерек керек?</p><div class="row"><button class="btn" onclick="pickN(2)">2 тегерек</button><button class="btn" onclick="pickN(3)">3 тегерек</button></div>`;return}
+if(P.step==1){u.innerHTML=hd+`<p class="q">Топтордун аттарын жаз:</p>`+t.nm.map((_,i)=>`<input class="in nmI" placeholder="${'ABC'[i]} тобу" maxlength="12">`).join('')+`<button class="btn" onclick="setNm()">Улантуу</button>`;return}
+const ks=Object.keys(G[P.n].p);P.o={nm:P.nm,txt:{}};
+u.innerHTML=hd+`<div id="dg" class="dg"></div><small>Ар бир аймакка канча экенин жаз</small><div class="grid">`+ks.map(k=>`<label>${qtext(k,P.nm,P.n)}<input class="in" type="number" inputmode="numeric" data-k="${k}"></label>`).join('')+`</div><button class="btn" id="ck">Текшер</button>`;draw();
+u.querySelectorAll('.in').forEach(inp=>{inp.onfocus=()=>{P.o.hl=inp.dataset.k;draw()};inp.oninput=()=>{P.o.txt[inp.dataset.k]=[inp.value];draw()}});
+$('#ck').onclick=()=>{if(P.lock)return;let ok=1;u.querySelectorAll('.in').forEach(i=>{const r=i.value!==''&&+i.value===t.sol[i.dataset.k];i.classList.toggle('bad',!r);if(!r)ok=0});
+if(ok){good();toast('✅ Диаграмма туура!');P.step=3;qStep()}else{bad();fb('❌ Кайра эсепте. Бардык сандардын суммасы '+t.T+' болушу керек.',0)}}}
+function pickN(n){if(n==P.t.n){good();P.step=1;fillStep()}else{bad();fb('❌ Маселеде канча топ бар? Кайра ойлон.',0)}}
+function setNm(){const v=[...document.querySelectorAll('.nmI')].map(x=>x.value.trim());if(v.some(z=>!z)){fb('Бардык топтун атын жаз',0);return}P.nm=v;P.step=2;fillStep()}
+function qStep(){const t=P.t,u=$('#ui');P.o={nm:P.nm,na:1,txt:Object.fromEntries(Object.entries(t.sol).map(([k,v])=>[k,[v]]))};
+u.innerHTML=`<div id="dg" class="dg"></div><p class="q">Диаграммадан жоопторду тап:</p><div class="grid">`+t.qs.map((k,i)=>`<label>${qtext(k,P.nm,P.n)} — канча?<input class="in" type="number" inputmode="numeric" data-i="${i}"></label>`).join('')+`</div><button class="btn" id="ck">Текшер</button>`;draw();fb('');
+$('#ck').onclick=()=>{if(P.lock)return;let ok=1;u.querySelectorAll('.in').forEach(i=>{const r=i.value!==''&&+i.value===qv(t.qs[i.dataset.i],t.sol);i.classList.toggle('bad',!r);if(!r)ok=0});
+if(ok){good();fb('✅ Туура! Сен Венндин диаграммасын чечтиң!',1);solved(15)}else{bad();fb('❌ Диаграммага кайра кара, аймактарды кош.',0)}}}
+/* ===== БОСС ===== */
+function boss(){document.body.classList.add('boss');clearInterval(timer);
+const q=BP.slice().sort(()=>Math.random()-.5).slice(0,5).map(([T,A,B,X,k,nm])=>({tx:`Бардыгы ${T}. «${nm[0]}» — ${A}. «${nm[1]}» — ${B}. Экөөнө тең — ${X}. ${qtext(k,nm,2)} — канча?`,a:qv(k,{a:A-X,b:B-X,ab:X,o:T-A-B+X})}));
+P={q,i:0,sc:0,left:60,done:0};
+app.innerHTML=`<div class="wrap"><div class="top"><button class="back" onclick="map()">←</button><h2>💀 BOSS · ⏱️ <span id="tm">60</span></h2><span></span></div><div class="bar"><u id="tb" style="width:100%"></u></div><div id="ui"></div></div>`;bq();
+timer=setInterval(()=>{P.left--;$('#tm').textContent=P.left;$('#tb').style.width=P.left/60*100+'%';if(P.left<=0)bend()},1000)}
+function bq(){const q=P.q[P.i];$('#ui').innerHTML=`<h3>${P.i+1}/5</h3><p class="q">${q.tx}</p><input class="in" id="bi" type="number" inputmode="numeric"><button class="btn" id="bo">OK</button>`;
+const go=()=>{if(P.done)return;const v=$('#bi').value;if(v==='')return;
+if(+v===q.a){P.sc++;S.xp+=20;S.pts+=20+S.streak*2;S.streak++;S.ok++;toast('+20 XP ✨')}else{S.streak=0;S.bad++;toast('❌ Туура жообу: '+q.a)}
+S.best=Math.max(S.best,S.streak);save();if(++P.i>=5)bend();else bq()};
+$('#bo').onclick=go;$('#bi').onkeydown=e=>{if(e.key=='Enter')go()};$('#bi').focus()}
+function bend(){clearInterval(timer);P.done=1;const s=P.sc;S.boss=Math.max(S.boss,s);ach();save();
+const r=s==5?['🏆','Венндин чебери']:s==4?['⭐','Логика изилдөөчүсү']:s==3?['🔎','Жакшы аракет']:['💫','Дагы бир жолу аракет кыл!'];
+$('#ui').innerHTML=`<div class="c"><div class="logo">${r[0]}</div><h2>${r[1]}</h2><p>${s}/5 · ✨ +${s*20} XP</p><button class="btn" onclick="boss()">🔁 Кайра аракет</button><button class="btn s" onclick="map()">Деңгээлдер</button></div>`}
+/* ===== МУГАЛИМ ===== */
+function teacher(){app.innerHTML=`<div class="wrap"><div class="top"><button class="back" onclick="home()">←</button><h2>👩‍🏫 Мугалим үчүн</h2><span></span></div><table>`+
+[['Упай',S.pts],['XP',S.xp],['Даража',lvl()],['Туура жооптор',S.ok],['Ката жооптор',S.bad],['Аткарылган тапшырма',Object.keys(S.done).length+'/'+tot],['Босс (эң жакшы)',S.boss+'/5'],['Жетишкендиктер',Object.keys(S.ach).length+'/'+AC.length]].map(r=>`<tr><td>${r[0]}</td><td><b>${r[1]}</b></td></tr>`).join('')+
+L.map((l,i)=>`<tr><td>${i+1}-деңгээл: ${l.n}</td><td><b>${dn(i)}/${l.T.length}</b></td></tr>`).join('')+
+`</table><button class="btn s" onclick="if(!this.dataset.r){this.dataset.r=1;this.textContent='⚠️ Дагы бир жолу бас — баары өчөт'}else{try{localStorage.removeItem(K)}catch(e){}location.reload()}">🗑 Тазалоо</button></div>`}
+home();
+</script></body></html>
